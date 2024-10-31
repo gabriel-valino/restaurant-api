@@ -1,0 +1,17 @@
+{
+  "name": "api-restaurant",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Gabriel Valino",
+  "license": "ISC",
+  "description": "API para gerenciar pedidos das mesas de um restaurante.",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.12",
+    "typescript": "^5.5.4"
+  }
+}

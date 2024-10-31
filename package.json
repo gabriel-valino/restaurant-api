@@ -3,19 +3,22 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "knex": "node --import tsx ./node_modules/.bin/knex"
   },
   "keywords": [],
   "author": "Gabriel Valino",
   "license": "ISC",
   "description": "API para gerenciar pedidos das mesas de um restaurante.",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "knex": "^3.1.0",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.12",
-    "typescript": "^5.5.4",
-    "tsx": "^4.16.2"
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
   }
 }

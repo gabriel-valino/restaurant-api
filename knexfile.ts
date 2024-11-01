@@ -5,7 +5,7 @@ export default {
   },
   pool: {
     afterCreate: (connection: any, done: any) => {
-      connection.run("PRAAGMA foreign_keys = ON")
+      connection.run("PRAGMA foreign_keys = ON")
       done()
     }
   },

@@ -8,7 +8,7 @@ class ProductController {
     try {
       const { name } = req.query
 
-      const products = await knex<ProductTable>("products")
+      const products = await knex<ProductRepository>("products")
         .select()
         .whereLike("name", `%${name ?? ""}%`)
         .orderBy("name")
@@ -28,7 +28,7 @@ class ProductController {
 
       const { name, price } = bodySchema.parse(req.body)
 
-      await knex<ProductTable>("products").insert({ name, price })
+      await knex<ProductRepository>("products").insert({ name, price })
 
       return res.status(201).json()
     } catch (error) {
@@ -51,13 +51,13 @@ class ProductController {
 
       const { name, price } = bodySchema.parse(req.body)
 
-      const product = await knex<ProductTable>("products").select().where({ id }).first()
+      const product = await knex<ProductRepository>("products").select().where({ id }).first()
 
       if (!product) {
         throw new AppError("Product not found.")
       }
 
-      await knex<ProductTable>("products").update({ name, price, updated_at: knex.fn.now() }).where({ id })
+      await knex<ProductRepository>("products").update({ name, price, updated_at: knex.fn.now() }).where({ id })
 
       return res.json()
     } catch (error) {
@@ -73,13 +73,13 @@ class ProductController {
         .refine((value) => !isNaN(value), { message: "ID must be a number." })
         .parse(req.params.id)
 
-      const product = await knex<ProductTable>("products").select().where({ id }).first()
+      const product = await knex<ProductRepository>("products").select().where({ id }).first()
 
       if (!product) {
         throw new AppError("Product not found.")
       }
 
-      await knex<ProductTable>("products").delete().where({ id })
+      await knex<ProductRepository>("products").delete().where({ id })
 
       return res.json()
     } catch (error) {
